@@ -1,10 +1,13 @@
-import { useEffect } from "react"
 
 function App() {
-
   return (
     <>
-      <div className='bg-green-500'>this div should be red</div>
+      <div className='mx-auto w-fit text-3xl text-dark-blue'>Placeholder div</div>
+      <div className='mx-auto w-fit text-3xl text-gradient-darkblue'>Placeholder div</div>
+      <div className='mx-auto w-fit text-3xl text-blue'>Placeholder div</div>
+      <div className='mx-auto w-fit text-3xl text-gradient-brightblue'>Placeholder div</div>
+      <div className='mx-auto w-fit text-3xl text-grayish-blue'>Placeholder div</div>
+      <div className='mx-auto w-fit text-3xl text-light-blue'>Placeholder div</div>
     </>
   )
 }
