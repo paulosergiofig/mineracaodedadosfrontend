@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-dark-blue: #21354D;
+  --color-blue: #0084FF;
+  --color-light-blue: #CBE4FA; /* caixa de envio da imagem carregando */
+  --color-grayish-blue: #587ca4; /* o do circulo em volta da mulher na homepage */
+  --color-gradient-brightblue: #586F8A;
+  --color-gradient-darkblue: #124685;
+  --color-green: #05BC20;
+  --color-light-green: #DFFFE3 /* caixa de envio da imagem status 'Arquivo enviado' */
+}
+
+body {
+  font-family: 'Inter';
+}
+
+/* @theme {
+    --font-inter: 'Inter', sans-serif
+} */
