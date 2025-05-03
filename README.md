@@ -1,24 +1,54 @@
-Projeto Front-end criado para a disciplina de Mineração de Dados - 7P UNDB.
+# React + TypeScript + Vite
 
-Passos para instalar e rodar localmente:
-# Se certificar que tem node.js e git instalados. para tal, pode abrir o painel de controle
-# do computador ou dar o comando git (ou node) num terminal.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-1- Fazer o clone do repositório na máquina local:
-* Utilizando o GitHub para Desktop: https://docs.github.com/pt/desktop/adding-and-cloning-repositories/cloning-a-repository-from-github-to-github-desktop
+Currently, two official plugins are available:
 
-* Utilizando o terminal do computador:
-  1- Abra o terminal na pasta que você deseja clonar o repositório
-  2- Digite "git clone https://github.com/paulosergiofig/mineracaodedadosfrontend.git"
-  3- Navegue até o repositório criado a partir do terminal ou, pelo explorador de arquivos,
-  abra um novo terminal dentro da pasta clonada.
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-2- Instalar as dependências:
-  Estando certificado que se encontra dentro do repositório, digite o seguinte comando no terminal:
-  npm install
+## Expanding the ESLint configuration
 
-# Se ocorrer o erro 'ENOENT: no such file or directory (...)\package.json', é provável que você não esteja na pasta correta. certifique-se que está mesmo no repositório.
+If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
 
-3- Iniciar:
-  Comando no terminal:
-  npm run dev
+```js
+export default tseslint.config({
+  extends: [
+    // Remove ...tseslint.configs.recommended and replace with this
+    ...tseslint.configs.recommendedTypeChecked,
+    // Alternatively, use this for stricter rules
+    ...tseslint.configs.strictTypeChecked,
+    // Optionally, add this for stylistic rules
+    ...tseslint.configs.stylisticTypeChecked,
+  ],
+  languageOptions: {
+    // other options...
+    parserOptions: {
+      project: ['./tsconfig.node.json', './tsconfig.app.json'],
+      tsconfigRootDir: import.meta.dirname,
+    },
+  },
+})
+```
+
+You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+
+```js
+// eslint.config.js
+import reactX from 'eslint-plugin-react-x'
+import reactDom from 'eslint-plugin-react-dom'
+
+export default tseslint.config({
+  plugins: {
+    // Add the react-x and react-dom plugins
+    'react-x': reactX,
+    'react-dom': reactDom,
+  },
+  rules: {
+    // other rules...
+    // Enable its recommended typescript rules
+    ...reactX.configs['recommended-typescript'].rules,
+    ...reactDom.configs.recommended.rules,
+  },
+})
+```
