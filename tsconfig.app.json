@@ -23,7 +23,8 @@
     "noUncheckedSideEffectImports": true,
     "paths": {
       "@/*": ["./src/*"],
-      "@assets/*": ["./src/public/assets/*"]
+      "@assets/*": ["./src/public/assets/*"],
+      "@features/*": ["./src/features/*"]
     }
   },
   "include": ["src"]
