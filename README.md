@@ -1,5 +1,11 @@
 # Projeto Front-end criado para a disciplina de Mineração de Dados - 7P UNDB.
 
+CASO JA TENHA FEITO A INSTALAÇÃO:
+no terminal do projeto:
+git checkout main
+git fetch
+git pull origin main
+
 Passos para instalar e rodar localmente:
 * Se certificar que tem node.js e git instalados. para tal, pode abrir o painel de controle do computador ou dar o comando git (ou node) num terminal.
 
