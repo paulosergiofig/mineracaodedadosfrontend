@@ -20,7 +20,7 @@ export const Dropdown: FC<DropdownProps> = (props) => {
     </DropdownMenuTrigger>
     <DropdownMenuContent
     onInteractOutside={() => setOpen(false)}
-    className='w-max max-w-full'>
+    className='w-max max-w-full text-dark'>
       {options.map((opcao) => {
         return (
             <DropdownMenuItem
