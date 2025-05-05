@@ -1,8 +1,7 @@
-import React from 'react'
-
 export const Home = () => {
   return (
-    <div className='bg-green-500'>
+    <div className=' bg-gray-200'>
+      placeholderHome
     </div>
   )
 }
