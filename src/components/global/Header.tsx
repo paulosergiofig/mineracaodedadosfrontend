@@ -1,4 +1,4 @@
-import diagnoxLogo from '../../public/assets/imgs/DIAGNOX_Logo.png'
+import diagnoxLogo from '../../assets/imgs/DIAGNOX_Logo.png'
 import { NavLink } from 'react-router'
 
 export const Header = () => {
