@@ -1,1 +1,1 @@
-export * from './ItemDeDiagnostico'
+export * from './ItemDeOpcaoDeDiagnostico'
