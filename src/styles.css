@@ -10,6 +10,7 @@
   --color-gradient-darkblue: #124685;
   --color-green: #05BC20;
   --color-light-green: #DFFFE3 /* caixa de envio da imagem status 'Arquivo enviado' */
+  --color-white-background: #E8F0FF; /* fundo da pagina */
 }
 
 body {
