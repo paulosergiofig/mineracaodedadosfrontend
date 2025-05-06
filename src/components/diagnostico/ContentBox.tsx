@@ -1,35 +1,23 @@
-import { FC, PropsWithChildren } from 'react'
+import { FC, PropsWithChildren } from "react"
 
 interface ContentBoxProps {
-    Root: FC<PropsWithChildren>
-    Title: FC<PropsWithChildren>
-    Body: FC<PropsWithChildren>
+    title?: string
 }
 
-const Root: FC<PropsWithChildren> = ({children}) => {
+export const ContentBox: FC<PropsWithChildren<ContentBoxProps>> = (props) => {
+    const { title, children } = props
     return (
-      <div>
-        {children} rendered on root
-      </div>
+        <div className="
+         w-[400px] xl:w-[500px] 2xl:w-[700px] max-w-full h-max
+         rounded-lg shadow-2xl ">
+            {!!title && 
+            (<div className="bg-content-box-title mx-[8%] text-2xl py-7 font-medium">
+                {title}
+            </div>)}
+            <div className="bg-white rounded-lg p-6 px-10
+            h-[200px] xl:h-[380px] 2xl:h-[450px]">
+                {children}
+            </div>
+        </div>
     )
 }
-
-const Title: FC<PropsWithChildren> = ({children}) => {
-    return (
-        <div>{children} rendered on Title</div>
-    )
-}
-
-const Body: FC<PropsWithChildren> = ({children}) => {
-    return (
-        <div>{children} rendered on Body</div>
-    )
-}
-
-const ContentBox: ContentBoxProps = () => {}
-
-ContentBox.Root = Root
-ContentBox.Title = Title
-ContentBox.Body = Body
-
-export default ContentBox
