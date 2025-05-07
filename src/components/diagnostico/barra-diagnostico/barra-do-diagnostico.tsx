@@ -11,7 +11,6 @@ export const BarraDoDiagnostico: React.FC<BarraDoDiagnosticoProps> = ({
   progress,
   target,
   diagnosisDetails,
-  height = 20,
 }) => {
   const numberPresetColor = progress < target ? 'black' : (
     target < 70 ? 'blue' : 'purple-700'
@@ -23,8 +22,7 @@ export const BarraDoDiagnostico: React.FC<BarraDoDiagnosticoProps> = ({
         <span className={`text-${numberPresetColor} text-2xl ml-2 font-bold`}>{progress}%</span>
       </div>
     <div
-      className={`w-full rounded-full overflow-hidden`}
-      style={{ height }}>
+      className={`w-full rounded-full overflow-hidden bg-gray-300 h-4`}>
       <div
         className={`h-full transition-all duration-500 ease-in-out bg-${barPresetColor}`}
         style={{ width: `${Math.min(progress, 100)}%` }}
