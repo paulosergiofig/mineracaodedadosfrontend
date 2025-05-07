@@ -6,7 +6,7 @@ export const Header = () => {
     <header className='top-0 w-full bg-dark-blue fixed'>
         <div className="mx-[2.25%] p-1 py-6">
             <NavLink to={'/'}>
-                <img className='h-18' src={diagnoxLogo}/>
+                <img className='h-12 2xl:h-16' src={diagnoxLogo}/>
             </NavLink>
         </div>
     </header>
