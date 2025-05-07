@@ -1,1 +1,1 @@
-export * from './ContentBox'
+export * from './content-box'

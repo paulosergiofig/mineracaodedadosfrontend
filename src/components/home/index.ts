@@ -1,1 +1,1 @@
-export * from './ItemDeOpcaoDeDiagnostico'
+export * from './item-de-opcao-de-diagnostico'
