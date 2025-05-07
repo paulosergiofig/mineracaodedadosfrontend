@@ -3,7 +3,9 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigge
 
 interface DropdownProps {
     placeholderText: string
-    className?: string
+    buttonClassName?: string
+    itemClassName?: string
+    contentClassName?: string
     searchBarIconUrl?: string
     options: {label: string, value: string}[]
     opcaoSelecionada: any
@@ -11,20 +13,26 @@ interface DropdownProps {
 }
 
 export const Dropdown: FC<DropdownProps> = (props) => {
-  const { placeholderText, options, opcaoSelecionada, setOpcaoSelecionada, searchBarIconUrl, className } = props
+  const { placeholderText, options, opcaoSelecionada, setOpcaoSelecionada, searchBarIconUrl, 
+    buttonClassName,
+    contentClassName, 
+    itemClassName } = props
+
   const [open, setOpen] = useState<boolean>(false)
+  
   return (
     <DropdownMenu open={!!open}>
-    <DropdownMenuTrigger onClick={() => setOpen(true)}>
+    <DropdownMenuTrigger className={`${buttonClassName}`} onClick={() => setOpen(true)}>
       {!!searchBarIconUrl && searchBarIconUrl}
       {!!opcaoSelecionada ? opcaoSelecionada.label : placeholderText}
     </DropdownMenuTrigger>
     <DropdownMenuContent
-    onInteractOutside={() => setOpen(false)}
-    className={`w-max max-w-full text-dark ${className}`}>
+    className={`${contentClassName}`}
+    onInteractOutside={() => setOpen(false)}>
       {options.map((opcao) => {
         return (
             <DropdownMenuItem
+            className={`${itemClassName}`}
             key={`option-${opcao.value}`}
             onSelect={() => {
               setOpcaoSelecionada(opcao)
