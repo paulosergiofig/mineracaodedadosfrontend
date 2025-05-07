@@ -1,12 +1,10 @@
 import React from 'react';
 import { NavLink } from 'react-router';
 import NotFoundImage from '@/assets/imgs/404-asset.png';
-import { Header } from '../global/Header';
 
-const NotFound: React.FC = () => {
+export const NotFound: React.FC = () => {
   return (
-    <div className="min-h-screen bg-[var(--color-white-background)]">
-      <Header />
+    <div className="min-h-screen white-background">
       <div className="flex flex-col items-center justify-center p-4" style={{ minHeight: 'calc(100vh - 96px)' }}>
         <div className="w-full">
           <div className="flex justify-center mb-8">
@@ -16,12 +14,12 @@ const NotFound: React.FC = () => {
               className="w-[600px] max-w-full"
             />
           </div>
-          <h1 className="text-5xl font-bold text-center mb-4 text-[var(--color-dark-blue)]">OOPS!</h1>
-          <p className="text-center text-[var(--color-dark-blue)] text-lg mb-6">
+          <h1 className="text-5xl font-bold text-center mb-4 text-dark-blue">OOPS!</h1>
+          <p className="text-center text-dark-blue text-lg mb-6">
             Não conseguimos encontrar a página que você estava procurando.
             <br />
             Verifique o endereço digitado ou{' '}
-            <NavLink to="/" className="font-bold text-[var(--color-grayish-blue)] underline hover:text-[var(--color-blue)]">
+            <NavLink to="/" className="font-bold text-grayish-blue underline hover:text-blue">
               volte ao início
             </NavLink>
           </p>
@@ -30,5 +28,3 @@ const NotFound: React.FC = () => {
     </div>
   );
 };
-
-export default NotFound;
