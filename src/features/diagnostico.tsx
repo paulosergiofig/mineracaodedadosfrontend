@@ -2,9 +2,7 @@ import React from 'react'
 
 export const Diagnostico = () => {
   return (
-    <div className='bg-pink-600'>
-      placeholder-diagnosticos
-    </div>
+    <div className='h-full'>Diagnostico</div>
   )
 }
 

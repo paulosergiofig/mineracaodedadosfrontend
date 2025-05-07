@@ -5,6 +5,8 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
+  --color-background-app: #E8F4FC;
+  --color-content-box-title: #EBF5FF;
   --color-dark-blue: #21354D;
   --color-blue: #0084FF;
   --color-light-blue: #CBE4FA; /* caixa de envio da imagem carregando */
@@ -17,6 +19,7 @@
 
 body {
   font-family: 'Inter';
+  width: 100%;
 }
 
 /* @theme {
