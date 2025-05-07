@@ -5,8 +5,9 @@ interface ContentBox {
     Root: FC<PropsWithChildren<{className?: string}>>
     Content: FC<PropsWithChildren<{className?: string}>>
 }
+// 06-05: className nao funciona em sobrescrever estilos ja declarados.
 
-const Root: ContentBox['Title'] = ({children, className}) => {
+const Root: ContentBox['Root'] = ({children, className}) => {
     return (
     <div className={`
         w-[400px] xl:w-[500px] 2xl:w-[700px] max-w-full h-max
@@ -14,16 +15,17 @@ const Root: ContentBox['Title'] = ({children, className}) => {
             {children}
     </div>)
 }
-const Title: ContentBox['Root'] = ({children, className}) => {
+const Title: ContentBox['Title'] = ({children, className}) => {
+    console.log(className)
     return (
-    <div className={` mx-[8%] text-lg xl:text-2xl py-7 font-medium ${className ?? ''}`}>
+    <div className={` mx-[8%] text-lg xl:text-2xl py-4 xl:py-7 font-medium ${className ?? ''}`}>
         {children}
     </div>)
 }
 
 const Content: ContentBox['Content'] = ({children, className}) => {
     return ( 
-    <div className={`bg-white rounded-lg p-6 px-10
+    <div className={`bg-white rounded-b-lg p-6 px-10
     h-[200px] xl:h-[380px] 2xl:h-[450px] ${className ?? ''}`}>
         {children}
     </div>)
