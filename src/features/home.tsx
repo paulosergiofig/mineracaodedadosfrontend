@@ -6,7 +6,7 @@ export const Home = () => {
     toast.error('error')
   }
   const handleSucClick = () => {
-    toast.success('sucess')
+    toast.success('Diagnostico Concluido')
   }
   return (
     <div className="h-full">
