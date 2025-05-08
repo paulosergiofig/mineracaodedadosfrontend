@@ -15,7 +15,7 @@ const toastComponent = (text: string, type: string) => {
             ${type === 'error' && ''}
         `}
         >{type === 'success'? (
-            <img className="w-fit h-4" src={confirmIcon} alt="confirm_icon" />
+            <img className="w-fit h-6 mx-1" src={confirmIcon} alt="confirm_icon" />
         ) : <a className="text-2xl font-extrabold mr-1 rounded-full border-white border-2 px-3
         ">!</a>}{type !== 'error'? text : <a className="truncate max-w-[315px]">{text}</a>}</div>
     )
@@ -26,8 +26,8 @@ const appToast: toast = {
         toast.dark(toastComponent(successMsg, 'success'),
             {
                 autoClose: 2000,
-                className: 'border border-green border-2 text-sm',
-                style: { width: '400px'},
+                className: 'text-md',
+                style: { width: '400px', backgroundColor: '#293450', paddingLeft: '1.5rem' },
                 position: 'bottom-right',
                 hideProgressBar: true
             }
