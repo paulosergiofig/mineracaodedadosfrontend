@@ -4,13 +4,13 @@ import uploadIcon from "../../assets/imgs/icon_upload.png";
 import confirmedIcon from "../../assets/imgs/icon_confirm.png";
 import {largeSpinner} from '../../assets/spinner'
 
-interface FilePickerProps {
+interface CaixaDeUploadProps {
   imagem: any;
   setImagem: (imagem: any) => void;
   serverResponseStatus?: string;
 }
 
-export const FilePicker: FC<FilePickerProps> = (props) => {
+export const CaixaDeUpload: FC<CaixaDeUploadProps> = (props) => {
   const { imagem, setImagem, serverResponseStatus } = props;
   const onChange = (imageList: any, addUpdateIndex: any) => {
     console.log(imageList, addUpdateIndex);

@@ -1,2 +1,2 @@
 export * from './content-box'
-export * from './file-picker'
+export * from './caixa-de-upload'

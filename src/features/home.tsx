@@ -1,4 +1,4 @@
-import { FilePicker } from "@/components"
+import { CaixaDeUpload } from "@/components";
 import { useState } from "react";
 
 export const Home = () => {
@@ -8,7 +8,7 @@ export const Home = () => {
   return (
     <div className="h-full">
       <div className="p-3 flex justify-center">
-      <FilePicker imagem={image} setImagem={setImage} serverResponseStatus={r}/>
+      <CaixaDeUpload imagem={image} setImagem={setImage} serverResponseStatus={r}/>
 
       </div>
       <button onClick={() => {
