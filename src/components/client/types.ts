@@ -4,7 +4,7 @@ export interface ServerRes {
 }
 
 export interface ReqTypes {
-   sendImage: (path:string, reqBody: File, reqBodyProps:any) => Promise<ServerRes[]> 
+   sendImage: (path:string, reqBody: File, reqBodyProps?:any) => Promise<ServerRes[]> 
 }
 
 

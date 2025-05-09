@@ -1,9 +1,8 @@
 import { ReqTypes } from "./types"
-
-const axios = require('axios').default
+import axios from 'axios'
 
 const httpClient = axios.create({
-    baseUrl: ''
+    baseURL: ''
 })
 
 const requisition = {
@@ -13,7 +12,7 @@ const requisition = {
 }
 
 const client: ReqTypes = {
-    sendImage: (path: string, image: File, reqBodyProps: any) => {
+    sendImage: (path: string, image: File, reqBodyProps?: any) => {
         return (
             requisition.post(path, image, {
                 headers: {
