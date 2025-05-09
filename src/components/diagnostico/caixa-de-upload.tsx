@@ -28,7 +28,7 @@ export const CaixaDeUpload: FC<CaixaDeUploadProps> = (props) => {
           {({
             imageList,
             onImageUpload,
-            isDragging,
+            // isDragging,
             dragProps,
             // errors
           }) => (
