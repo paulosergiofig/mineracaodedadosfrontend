@@ -72,7 +72,7 @@ const appToast: toast = {
         toast.dark(toastComponent('Analisando exame', 'loading'),
         {
             autoClose: 10000,
-            className: 'text-sm text-white',
+            className: 'text-white',
             style: { width: '400px', backgroundColor: '#293450', paddingLeft: '1.5rem', color: 'white' },
             position: 'bottom-right',
             hideProgressBar: true
