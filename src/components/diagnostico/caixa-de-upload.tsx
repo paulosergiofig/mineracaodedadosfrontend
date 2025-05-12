@@ -35,13 +35,13 @@ export const CaixaDeUpload: FC<CaixaDeUploadProps> = (props) => {
             <div
               className="
                   upload__image-wrapper
-                  w-fit h-fit
+                  2xl:w-[650px] 2xl:h-[475px] xl:h-[300px] xl:w-[400px] w-[300px] h-[200px]
                   "
             >
               <button
                 className="
                       bg-light-blue 
-                      2xl:w-[650px] 2xl:h-[475px] xl:h-[300px] xl:w-[400px] w-[300px] h-[200px] rounded-md
+                      h-full max-h-full w-full max-w-full rounded-md
                       flex justify-center items-center hover:cursor-pointer border-dashed border-gray-500 border-2
                       "
                 onClick={onImageUpload}
@@ -60,15 +60,18 @@ export const CaixaDeUpload: FC<CaixaDeUploadProps> = (props) => {
                 ) : (
                   <div
                     className="flex flex-col items-center justify-center gap-3
-                       xl:w-[600px] xl:h-[400px]
+                      max-w-[90%] max-h-[90%] w-[90%] h-[90%]
                        "
                   >
                     <img
                       src={imagem[0]["data_url"]}
                       alt=""
-                      className="max-w-full max-h-full object-contain"
+                      className="w-full h-full object-contain"
                     />
+                    <div className="max-w-[70%] overflow-ellipsis overflow-hidden text-sm xl:text-lg">
                     {imageList[0].file?.name}
+
+                    </div>
                   </div>
                 )}
               </button>

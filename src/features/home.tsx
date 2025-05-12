@@ -35,7 +35,7 @@ export const Home = () => {
   }, [imagem])
   
   return (
-    <div className="h-full">
+    <div className="h-full bg-green-300 flex flex-col justify-center items-center">
       <CaixaDeUpload imagem={imagem} setImagem={setImagem} serverResponseStatus=""/>
       <button className="bg-red-300 p-3 rounded-lg m-3" onClick={sendImage}>mandar imagem</button>
     </div>
