@@ -1,0 +1,1 @@
+export * from './item-de-opcao-de-diagnostico'
