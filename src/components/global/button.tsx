@@ -5,7 +5,7 @@ interface ButtonProps extends FC<PropsWithChildren<ButtonHTMLAttributes<any>>> {
   className?: string;
 }
 
-const Button: ButtonProps = ({ children, className, onClick, ...props }) => {
+export const Button: ButtonProps = ({ children, className, onClick, ...props }) => {
   return (
     <button
       onClick={onClick}
@@ -23,4 +23,3 @@ const Button: ButtonProps = ({ children, className, onClick, ...props }) => {
   );
 };
 
-export default Button;

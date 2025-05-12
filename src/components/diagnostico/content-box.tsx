@@ -1,4 +1,5 @@
 import { FC, PropsWithChildren } from "react"
+import { twMerge } from "tailwind-merge"
 
 interface ContentBox {
     Title: FC<PropsWithChildren<{className?: string}>>
@@ -25,8 +26,8 @@ const Title: ContentBox['Title'] = ({children, className}) => {
 
 const Content: ContentBox['Content'] = ({children, className}) => {
     return ( 
-    <div className={`bg-white rounded-b-lg p-6 px-10
-    h-[200px] xl:h-[380px] 2xl:h-[450px] ${className ?? ''}`}>
+    <div className={twMerge(`bg-white rounded-b-lg p-6 px-10
+    h-[200px] xl:h-[380px] 2xl:h-[450px] ${className ?? ''}`)}>
         {children}
     </div>)
 }

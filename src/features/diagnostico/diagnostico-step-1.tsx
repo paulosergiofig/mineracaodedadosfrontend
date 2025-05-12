@@ -1,15 +1,22 @@
-import Button from "@/components/global/button";
 import { useDiagnosisStore } from "@/hooks";
-import { CaixaDeUpload, Dropdown } from "@/components";
-import mulherDiagnostico from '../assets/imgs/mulher_raiox2.png'
+import { Button, CaixaDeUpload, Dropdown } from "@/components";
+import mulherDiagnostico from '../../assets/imgs/mulher_raiox2.png'
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 
-export const Diagnostico = () => {
-  const isIdadeOssea: boolean = useDiagnosisStore((state) => state.diagnostico) === "";
+export const DiagnosticoStep1 = () => {
   const [reqStatus, setReqStatus] = useState("unrequested");
   const [sexo, setSexo] = useState<{ label: string; value: string }>();
   const [imagem, setImg] = useState<any>([]);
+
+  const isIdadeOssea: boolean = useDiagnosisStore((state) => state.diagnostico) === "";
+  const updateCurrentPage = useDiagnosisStore((state) => state.setDiagnosticoStep);
+  const currentPage = useDiagnosisStore((state) => state.diagnosticoStep);
+
+  const goToStep2 = () => {
+    console.log(currentPage)
+    updateCurrentPage(2)
+  }
 
   const { toast } = useToast()
 
@@ -63,11 +70,14 @@ export const Diagnostico = () => {
               Somente PNG e JPG (4mb max)
             </p>
             {/* refatorar para div pai ser grid-cols-2, e colocar col-start-2 e mb-0 para a imagem */}
+            {/* pra resolver essa ESTUPIDEZ PREGUIÇOSA */}
             <img src={mulherDiagnostico} alt="" 
             className={`z-0 absolute 
-              2xl:ml-[110%] 2xl:my-[-6.25%]
-              xl:ml-[125%] xl:my-[1.5%]
-              ml-[130%] my-[1%]
+              2xl:ml-[110%]  
+              xl:ml-[125%]  
+              ml-[130%] 
+              ${!!isIdadeOssea ? '2xl:my-[-6.9%] xl:my-[0.55%] my-[1%]' : 
+                '2xl:h-[120%] 2xl:my-[-6.2%] xl:my-[-0.6%] my-[-9.5%] xl:h-auto h-[130%]'} 
             `}/>
           </div>
         </div>
@@ -77,7 +87,9 @@ export const Diagnostico = () => {
         onClick={() => {
           if(!!isIdadeOssea && !sexo) {
             toast.error('Selecione o sexo referente à idade óssea')
+            return
           }
+          goToStep2()
         }}>Avançar</Button>
       </div>
     </div>
