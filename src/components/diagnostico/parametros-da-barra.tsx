@@ -1,6 +1,6 @@
 import { ContentBox } from "@/components";
 
-const ParametrosDaBarra = () => {
+export const ParametrosDaBarra = () => {
   return (
     <ContentBox.Content className="!h-fit !min-h-0 rounded-lg flex flex-col items-center">
       <div className="w-full h-3 rounded-full bg-gradient-to-r from-blue-500 to-purple-700 mb-4" />
@@ -18,4 +18,3 @@ const ParametrosDaBarra = () => {
   );
 };
 
-export default ParametrosDaBarra;
