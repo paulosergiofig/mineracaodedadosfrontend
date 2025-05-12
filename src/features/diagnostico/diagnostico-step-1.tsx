@@ -1,8 +1,10 @@
 import { useDiagnosisStore } from "@/hooks";
 import { Button, CaixaDeUpload, Dropdown } from "@/components";
 import mulherDiagnostico from '../../assets/imgs/mulher_raiox2.png'
+import { client } from "@/components/client"
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
+import { AxiosError } from "axios";
 
 export const DiagnosticoStep1 = () => {
   const [reqStatus, setReqStatus] = useState("unrequested");
@@ -12,13 +14,30 @@ export const DiagnosticoStep1 = () => {
   const isIdadeOssea: boolean = useDiagnosisStore((state) => state.diagnostico) === "";
   const updateCurrentPage = useDiagnosisStore((state) => state.setDiagnosticoStep);
   const currentPage = useDiagnosisStore((state) => state.diagnosticoStep);
+  const { toast } = useToast()
 
   const goToStep2 = () => {
     console.log(currentPage)
     updateCurrentPage(2)
   }
 
-  const { toast } = useToast()
+  const handleClick = async () => {
+    try {
+      if (!!imagem[0].file){
+        await client.sendImage('/', imagem[0].file).then((reqBody) => {
+          toast.success('')
+        })    
+      }
+    } catch (error: any) {
+      if (error.response){
+        const axiosError: AxiosError = error
+        const statusText = axiosError.response?.request.statusText || undefined
+        const statusCode = axiosError.response?.request.status || undefined
+        toast.error(`${statusCode? statusCode: ''} : ${statusText? statusText.toString() : ''}`)
+      }
+    }
+  }
+
 
   return (
     <div className="h-full">
@@ -70,7 +89,7 @@ export const DiagnosticoStep1 = () => {
               Somente PNG e JPG (4mb max)
             </p>
             {/* refatorar para div pai ser grid-cols-2, e colocar col-start-2 e mb-0 para a imagem */}
-            {/* pra resolver essa ESTUPIDEZ PREGUIÇOSA */}
+            {/* pra resolver essa estupidez preguiçosa */}
             <img src={mulherDiagnostico} alt="" 
             className={`z-0 absolute 
               2xl:ml-[110%]  
@@ -90,6 +109,7 @@ export const DiagnosticoStep1 = () => {
             return
           }
           goToStep2()
+          handleClick()
         }}>Avançar</Button>
       </div>
     </div>
