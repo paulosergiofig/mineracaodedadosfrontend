@@ -1,7 +1,7 @@
 import { CaixaDeUpload } from "@/components"
 import { client } from "@/components/client"
 import { useToast } from "@/hooks/use-toast"
-import { AxiosError, AxiosPromise } from "axios"
+import { AxiosError } from "axios"
 import { useEffect, useState } from "react"
 
 export const Home = () => {
