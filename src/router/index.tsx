@@ -6,7 +6,7 @@ const Router = () => {
         <BrowserRouter>
             <Routes>
                 <Route element={<AppLayout/>}>
-                    <Route index element={<Home/>}/>
+                    <Route index element={<Diagnostico/>}/>
                     <Route path="enviar-imagem/:opcaoCorpo/:doenca/:sexo" element={<EnvioDeImagem/>}/>
                     <Route path="diagnostico/:opcaoCorpo/:doenca/:sexo" element={<Diagnostico/>}/>
                     <Route path="*" element={<NotFound/>}/>
