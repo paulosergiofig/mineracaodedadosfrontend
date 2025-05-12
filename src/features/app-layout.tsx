@@ -7,7 +7,7 @@ export const AppLayout = () => {
     <ToastProvider>
     <div className="w-screen bg-background-app">
         <Header/>
-        <div className='pt-12 xl:pt-[110px] pb-12 xl:pb-[110px] h-screen'>
+        <div className='pt-[96px] 2xl:pt-[110px] pb-[96px] 2xl:pb-[110px] h-screen'>
           <Outlet/>
         </div>
     </div>
