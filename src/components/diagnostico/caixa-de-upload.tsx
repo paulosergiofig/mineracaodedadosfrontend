@@ -19,7 +19,7 @@ export const CaixaDeUpload: FC<CaixaDeUploadProps> = (props) => {
 
   return (
     <div className="2xl:w-[650px] 2xl:h-[475px] xl:h-[300px] xl:w-[400px] w-[300px] h-[200px] rounded-md">
-      {serverResponseStatus === "" ? (
+      {serverResponseStatus === "unrequested" ? (
         <ReactImageUploading
           value={imagem}
           onChange={onChange}
@@ -28,7 +28,7 @@ export const CaixaDeUpload: FC<CaixaDeUploadProps> = (props) => {
           {({
             imageList,
             onImageUpload,
-            isDragging,
+            // isDragging,
             dragProps,
             // errors
           }) => (
