@@ -9,7 +9,7 @@ interface ContentBox {
     Content: ContentBoxProps
 }
 
-const Root: ContentBox['Root'] = ({children, className}) => {
+const Root: ContentBoxProps = ({children, className}) => {
     return (
     <div className={twMerge(`
         w-[400px] xl:w-[500px] 2xl:w-[700px] max-w-full h-max
@@ -17,7 +17,7 @@ const Root: ContentBox['Root'] = ({children, className}) => {
             {children}
     </div>)
 }
-const Title: ContentBox['Title'] = ({children, className}) => {
+const Title: ContentBoxProps = ({children, className}) => {
     console.log(className)
     return (
     <div className={twMerge(` mx-[8%] text-lg xl:text-2xl py-4 xl:py-7 font-medium ${className ?? ''}`)}>
@@ -25,7 +25,7 @@ const Title: ContentBox['Title'] = ({children, className}) => {
     </div>)
 }
 
-const Content: ContentBox['Content'] = ({children, className}) => {
+const Content: ContentBoxProps = ({children, className}) => {
     return ( 
     <div className={twMerge(`bg-white rounded-b-lg p-6 px-10
     h-[200px] xl:h-[380px] 2xl:h-[450px] overflow-y-auto ${className ?? ''}`)}>
