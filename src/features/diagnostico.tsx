@@ -71,7 +71,10 @@ export const Diagnostico = () => {
             `}/>
           </div>
         </div>
-        <Button onClick={() => {
+        <Button
+        disabled={!imagem.length}
+        className={`${!imagem.length && 'bg-gray-500 hover:bg-gray-500 hover:cursor-default'}`}
+        onClick={() => {
           if(!!isIdadeOssea && !sexo) {
             toast.error('Selecione o sexo referente à idade óssea')
           }
