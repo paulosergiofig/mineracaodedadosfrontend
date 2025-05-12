@@ -1,3 +1,4 @@
+import Button from "@/components/global/button"
 import { useToast } from "@/hooks/use-toast"
 
 export const Home = () => {
