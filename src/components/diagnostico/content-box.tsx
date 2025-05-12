@@ -1,10 +1,12 @@
 import { FC, PropsWithChildren } from "react"
 import { twMerge } from "tailwind-merge"
 
+type ContentBoxProps = FC<PropsWithChildren<{className?: string}>>
+
 interface ContentBox {
-    Title: FC<PropsWithChildren<{className?: string}>>
-    Root: FC<PropsWithChildren<{className?: string}>>
-    Content: FC<PropsWithChildren<{className?: string}>>
+    Title: ContentBoxProps
+    Root: ContentBoxProps
+    Content: ContentBoxProps
 }
 
 const Root: ContentBox['Root'] = ({children, className}) => {
