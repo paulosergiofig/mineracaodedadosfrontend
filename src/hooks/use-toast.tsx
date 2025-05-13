@@ -3,10 +3,11 @@ import confirmIcon from '../assets/imgs/icon_confirmFilled.png'
 import { toastSpinner } from '../assets/toast-spinner'
 
 interface toast {
-    success: (args: any) => void
-    error: (args: any) => void
-    promise?: (arg: any) => void
-    loading: (arg: any) => void
+    success: (args: any) => string | number
+    error: (args: any) => string | number
+    promise?: (arg: any) => string | number
+    loading: (arg: any) => string | number
+    update: (id: string | number, props?: any) => void
 }
 
 const toastComponent = (text: string, type: string) => {
@@ -45,7 +46,7 @@ const toastComponent = (text: string, type: string) => {
 
 const appToast: toast = {
     success: (successMsg) => {
-        toast.dark(toastComponent(successMsg, 'success'),
+        return toast.dark(toastComponent(successMsg, 'success'),
             {
                 autoClose: 2000,
                 className: 'text-md',
@@ -57,7 +58,7 @@ const appToast: toast = {
     },
 
     error: (errorMsg) => {
-        toast.dark(toastComponent(errorMsg, 'error'),
+        return toast.dark(toastComponent(errorMsg, 'error'),
             {
                 autoClose: 2000,
                 className: 'border border-red-500 border-2 text-sm',
@@ -69,7 +70,7 @@ const appToast: toast = {
     },
 
     loading: () => {
-        toast.dark(toastComponent('Analisando exame', 'loading'),
+        return toast.dark(toastComponent('Analisando exame', 'loading'),
         {
             autoClose: 10000,
             className: 'text-white',
@@ -78,6 +79,12 @@ const appToast: toast = {
             hideProgressBar: true
         }
     )
+    },
+
+    update: (id, props) => {
+        return toast.update(id, {
+            render: {...props? props : toastComponent('Diagnóstico concluído', 'success')}
+        })
     }
     //EX
     // const getData = () => {

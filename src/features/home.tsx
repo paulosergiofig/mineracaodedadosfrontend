@@ -11,8 +11,9 @@ export const Home = () => {
   const sendImage = async () => {
     try {
       if (!!file){
+        const requisitionToast = toast.loading('Analisando exame')
         await client.sendImage('/', file).then((reqBody) => {
-          toast.success('')
+          toast.update(requisitionToast)
         })    
       }
     } catch (error: any) {
