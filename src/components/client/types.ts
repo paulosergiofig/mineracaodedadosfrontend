@@ -1,6 +1,7 @@
 export interface ServerRes {
     diagnosisName: string
-    diagnosisProbability: string
+    diagnosisProbability: string,
+    diagnosisImage?: any
 }
 
 export interface ReqTypes {

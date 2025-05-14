@@ -2,30 +2,31 @@ import { useDiagnosisStore } from "@/hooks";
 import { Button, CaixaDeUpload, Dropdown } from "@/components";
 import mulherDiagnostico from '../../assets/imgs/mulher_raiox2.png'
 import { client } from "@/components/client"
-import { useState } from "react";
+import { FC, PropsWithChildren, useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { AxiosError } from "axios";
 
-export const DiagnosticoStep1 = () => {
+export const DiagnosticoStep1: FC<PropsWithChildren<{setReq: (arg: any) => void}>> = (props) => {
   const [reqStatus, setReqStatus] = useState("unrequested");
   const [sexo, setSexo] = useState<{ label: string; value: string }>();
   const [imagem, setImg] = useState<any>([]);
 
   const isIdadeOssea: boolean = useDiagnosisStore((state) => state.diagnostico) === "";
-  const updateCurrentPage = useDiagnosisStore((state) => state.setDiagnosticoStep);
+  const updateCurrentStep = useDiagnosisStore((state) => state.setDiagnosticoStep);
   const currentPage = useDiagnosisStore((state) => state.diagnosticoStep);
   const { toast } = useToast()
-
-  const goToStep2 = () => {
-    console.log(currentPage)
-    updateCurrentPage(2)
-  }
 
   const handleClick = async () => {
     try {
       if (!!imagem[0].file){
+        const requisitionToast = toast.loading('Analisando exame')
         await client.sendImage('/', imagem[0].file).then((reqBody) => {
-          toast.success('')
+          toast.update(requisitionToast)
+          props.setReq(reqBody)
+        }).then(() => {
+
+          
+          updateCurrentStep(2)
         })    
       }
     } catch (error: any) {
@@ -108,7 +109,6 @@ export const DiagnosticoStep1 = () => {
             toast.error('Selecione o sexo referente à idade óssea')
             return
           }
-          goToStep2()
           handleClick()
         }}>Avançar</Button>
       </div>

@@ -1,17 +1,20 @@
-import { Suspense } from "react";
+import { FC, PropsWithChildren, Suspense } from "react";
 import { Button, ContentBox } from "@/components";
 import { useDiagnosisStore } from "@/hooks";
 import DiagnosticoStep2Suspense from "./diagnostico-step-2-suspense";
 import okIcon from "../../assets/imgs/icon_confirmCircled.png";
 import reloadIcon from "../../assets/imgs/reset.png";
 
-const DiagnosticoStep2 = () => {
+const DiagnosticoStep2: FC<
+  PropsWithChildren<{ req: any; setReq: (arg: any) => void }>> = (props) => {
+  const { req, setReq } = props;
   const updateCurrentPage = useDiagnosisStore(
     (state) => state.setDiagnosticoStep
   );
 
   const goBackToStep1 = () => {
     updateCurrentPage(1);
+    setReq({})
   };
 
   return (
