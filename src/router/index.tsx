@@ -7,7 +7,7 @@ const Router = () => {
             <Routes>
                 <Route element={<AppLayout />}>
                     <Route index element={<Home />} />
-                    <Route path="enviar-imagem" element={<Diagnostico />} />
+                    <Route path="diagnostico" element={<Diagnostico />} />
                     <Route path="*" element={<NotFound />} />
                 </Route>
             </Routes>
