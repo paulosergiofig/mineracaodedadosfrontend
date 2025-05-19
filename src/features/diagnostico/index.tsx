@@ -15,7 +15,7 @@ export const DiagnosticoSteps = () => {
   const currentStep = useDiagnosisStore((state) => state.diagnosticoStep);
   const [req, setReq] = useState<resPropsWithFile>()
 
-  if (currentStep === 1 ) {
+  if (currentStep === 1) {
     return <DiagnosticoStep1 req={req} setReq={setReq} />;
   } else {
     return <DiagnosticoStep2 req={req} setReq={setReq} />;

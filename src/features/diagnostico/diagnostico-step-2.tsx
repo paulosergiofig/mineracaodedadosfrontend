@@ -12,7 +12,6 @@ const DiagnosticoStep2: FC<
   const updateCurrentPage = useDiagnosisStore(
     (state) => state.setDiagnosticoStep
   );
-  console.log(req)
   const goBackToStep1 = () => {
     updateCurrentPage(1);
     setReq({})
@@ -20,7 +19,7 @@ const DiagnosticoStep2: FC<
   useEffect(() => {
     localStorage.setItem('diagnosisType', req.exam_type)
   }, [])
-  
+
   return (
     <div className="h-full w-full flex justify-center">
       <div

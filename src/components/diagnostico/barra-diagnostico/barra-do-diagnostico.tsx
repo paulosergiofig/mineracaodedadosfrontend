@@ -13,7 +13,6 @@ export const BarraDoDiagnostico: React.FC<BarraDoDiagnosticoProps> = ({
   target,
   condition_name,
 }) => {
-  console.log(progress, target)
   const numberPresetColor = progress < target ? 'black' : (
     target < 70 ? 'text-blue' : 'text-purple-700'
   )
