@@ -19,13 +19,13 @@
 }
 
 body {
-  font-family: 'Poppins';
+  font-family: 'Inter' ;
   width: 100%;
 }
 
-/* @theme {
-    --font-inter: 'Inter', sans-serif
-} */
+@theme {
+    --font-poppins: 'Poppins', sans-serif
+}
 
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);

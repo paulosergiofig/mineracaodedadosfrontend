@@ -13,7 +13,7 @@ export const ItemDeOpcaoDeDiagnostico: FC<ItemDeOpcaoDeDiagnosticoComponentProps
     <button
       className="bg-white transition-transform duration-200 w-80
       hover:cursor-pointer ease-in-out hover:scale-105 hover:shadow-xl rounded-xl
-      flex flex-col gap-6 p-12 items-center text-center shadow-lg "
+      flex flex-col gap-6 p-12 items-center text-center shadow-lg font-poppins"
       onClick={() => setOpcaoCorpo(opcaoCorpo)}
     >
       <img className='w-max max-w-full' src={imgUrl} alt={`${description}-image`} />
