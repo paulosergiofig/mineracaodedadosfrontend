@@ -1,7 +1,7 @@
 import { useDiagnosisStore } from "@/hooks";
 import { Button, CaixaDeUpload, Dropdown } from "@/components";
 import mulherDiagnostico from '../../assets/imgs/mulher_raiox2.png'
-import { client } from "@/components/client"
+import { client } from "@/client"
 import { FC, PropsWithChildren, useEffect, useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { AxiosError } from "axios";
