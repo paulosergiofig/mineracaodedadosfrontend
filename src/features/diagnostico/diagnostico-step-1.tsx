@@ -6,17 +6,25 @@ import { FC, PropsWithChildren, useEffect, useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { AxiosError } from "axios";
 
-export const DiagnosticoStep1: FC<PropsWithChildren<{setReq: (arg: any) => void}>> = (props) => {
+export const DiagnosticoStep1: FC<PropsWithChildren<{req: any, setReq: (arg: any) => void}>> = (props) => {
   // const [reqStatus, setReqStatus] = useState("unrequested");
   const [sexo, setSexo] = useState<{ label: string; value: string }>();
   const [ file, setFile ] = useState<File>()
   const [ imagem, setImagem ] = useState<any[]>([])
 
   const updateCurrentStep = useDiagnosisStore((state) => state.setDiagnosticoStep);
-  const currentPage = useDiagnosisStore((state) => state.diagnosticoStep);
+  // const currentPage = useDiagnosisStore((state) => state.diagnosticoStep);
   const { toast } = useToast()
   const examType = useDiagnosisStore((state) => state.diagnostico)
+  const setExamType = useDiagnosisStore((state) => state.setDiagnostico)
   const isIdadeOssea = examType === 'idade_ossea'
+
+  useEffect(() => {
+    if(!!localStorage.getItem('diagnosisType')){
+      const examType = localStorage.getItem('diagnosisType')!
+      setExamType(examType)
+    }
+  }, [])
 
   const handleClick = async () => {
     try {
@@ -27,7 +35,7 @@ export const DiagnosticoStep1: FC<PropsWithChildren<{setReq: (arg: any) => void}
           exam_type: examType,
           patient_sex: sexo?.value,
           // MUDAR EMBAIXO MANUALMENTE OS VALORES DA DOENÇA
-          selected_diseases_json: ['a', 'b', 'c', 'd']
+          selected_diseases_json: ['pneumonia', 'derrame pleural']
         }
         const requisitionToast = toast.loading('Analisando exame')
         console.log(reqBody)

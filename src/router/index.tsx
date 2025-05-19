@@ -1,4 +1,4 @@
-import { AppLayout, DiagnosticoSteps, EnvioDeImagem, Home, NotFound } from '@/features'
+import { AppLayout, DiagnosticoSteps, Home, NotFound } from '@/features'
 import { BrowserRouter, Route, Routes } from "react-router"
 
 const Router = () => {

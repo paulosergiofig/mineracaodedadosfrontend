@@ -17,5 +17,5 @@ export const useDiagnosisStore: UseBoundStore<StoreApi<DiagnosisStoreProps>> = c
     diagnostico: '',
     setDiagnostico: (newDiagnostico: string) => set(() => ({ diagnostico: newDiagnostico })),
     diagnosticoStep: 1,
-    setDiagnosticoStep: (currentStep: number) => set(() => ({ diagnosticoStep: currentStep }))
+    setDiagnosticoStep: (currentStep: number) => set(() => ({ diagnosticoStep: currentStep })),
 }))

@@ -1,4 +1,4 @@
-import { FC, PropsWithChildren, Suspense } from "react";
+import { FC, PropsWithChildren, Suspense, useEffect } from "react";
 import { Button, ContentBox } from "@/components";
 import { useDiagnosisStore } from "@/hooks";
 import DiagnosticoStep2Suspense from "./diagnostico-step-2-suspense";
@@ -13,12 +13,14 @@ const DiagnosticoStep2: FC<
     (state) => state.setDiagnosticoStep
   );
   console.log(req)
-
   const goBackToStep1 = () => {
     updateCurrentPage(1);
     setReq({})
   };
-
+  useEffect(() => {
+    localStorage.setItem('diagnosisType', req.exam_type)
+  }, [])
+  
   return (
     <div className="h-full w-full flex justify-center">
       <div
@@ -53,10 +55,7 @@ const DiagnosticoStep2: FC<
             </ContentBox.Title>
             <ContentBox.Content className="flex items-center justify-center">
               <Suspense fallback={<DiagnosticoStep2Suspense />}>
-                <DetalhesDoDiagnostico diagnosticos={[
-                  {probability: 10,
-                  condition_name: 'a'}
-                ]}/>
+                <DetalhesDoDiagnostico diagnosticos={req.results}/>
               </Suspense>
             </ContentBox.Content>
           </ContentBox.Root>

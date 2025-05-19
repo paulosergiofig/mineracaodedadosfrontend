@@ -1,4 +1,5 @@
 import React from 'react';
+import { twMerge } from 'tailwind-merge';
 
 type BarraDoDiagnosticoProps = {
   progress: number;
@@ -15,7 +16,7 @@ export const BarraDoDiagnostico: React.FC<BarraDoDiagnosticoProps> = ({
   const numberPresetColor = progress < target ? 'black' : (
     target < 70 ? 'blue' : 'purple-700'
   )
-  const barPresetColor = target < 70 ? 'blue' : 'purple-700'
+  const barPresetColor = target < 70 ? 'bg-blue-500' : 'bg-purple-700'
   return (
     <div>
       <div className="text-xl py-[6px]">{condition_name}: 
@@ -24,7 +25,7 @@ export const BarraDoDiagnostico: React.FC<BarraDoDiagnosticoProps> = ({
     <div
       className={`w-full rounded-full overflow-hidden bg-gray-300 h-4`}>
       <div
-        className={`h-full transition-all duration-500 ease-in-out bg-${barPresetColor}`}
+        className={twMerge(`h-full transition-all duration-500 ease-in-out ${barPresetColor}`)}
         style={{ width: `${Math.min(progress, 100)}%` }}
       />
     </div>
