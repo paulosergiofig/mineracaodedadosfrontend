@@ -1,6 +1,6 @@
 import { create, StoreApi, UseBoundStore } from "zustand";
 
-type sexOptions = 'M' | 'F' | undefined
+type sexOptions = 'masculino' | 'feminino' | undefined
 
 interface DiagnosisStoreProps {
     sexo: sexOptions
@@ -13,9 +13,9 @@ interface DiagnosisStoreProps {
 
 export const useDiagnosisStore: UseBoundStore<StoreApi<DiagnosisStoreProps>> = create((set) => ({
     sexo: undefined,
-    setSexo: (newSexo: DiagnosisStoreProps['sexo']) => set(() => ({ sexo: newSexo})),
+    setSexo: (newSexo: DiagnosisStoreProps['sexo']) => set(() => ({ sexo: newSexo })),
     diagnostico: '',
-    setDiagnostico: (newDiagnostico: string) => set(() => ({ diagnostico: newDiagnostico})),
+    setDiagnostico: (newDiagnostico: string) => set(() => ({ diagnostico: newDiagnostico })),
     diagnosticoStep: 1,
-    setDiagnosticoStep: (currentStep: number) => set(() => ({ diagnosticoStep: currentStep}))
+    setDiagnosticoStep: (currentStep: number) => set(() => ({ diagnosticoStep: currentStep }))
 }))

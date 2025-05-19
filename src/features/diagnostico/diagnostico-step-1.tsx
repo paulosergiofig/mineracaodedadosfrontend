@@ -2,32 +2,41 @@ import { useDiagnosisStore } from "@/hooks";
 import { Button, CaixaDeUpload, Dropdown } from "@/components";
 import mulherDiagnostico from '../../assets/imgs/mulher_raiox2.png'
 import { client } from "@/components/client"
-import { FC, PropsWithChildren, useState } from "react";
+import { FC, PropsWithChildren, useEffect, useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { AxiosError } from "axios";
 
 export const DiagnosticoStep1: FC<PropsWithChildren<{setReq: (arg: any) => void}>> = (props) => {
-  const [reqStatus, setReqStatus] = useState("unrequested");
+  // const [reqStatus, setReqStatus] = useState("unrequested");
   const [sexo, setSexo] = useState<{ label: string; value: string }>();
-  const [imagem, setImg] = useState<any>([]);
+  const [ file, setFile ] = useState<File>()
+  const [ imagem, setImagem ] = useState<any[]>([])
 
-  const isIdadeOssea: boolean = useDiagnosisStore((state) => state.diagnostico) === "";
   const updateCurrentStep = useDiagnosisStore((state) => state.setDiagnosticoStep);
   const currentPage = useDiagnosisStore((state) => state.diagnosticoStep);
   const { toast } = useToast()
+  const examType = useDiagnosisStore((state) => state.diagnostico)
+  const isIdadeOssea = examType === 'idade_ossea'
 
   const handleClick = async () => {
     try {
-      if (!!imagem[0].file){
+      if (!!file){
+        const reqBody = {
+          path: '/diagnose',
+          file: file,
+          exam_type: examType,
+          patient_sex: sexo?.value,
+          // MUDAR EMBAIXO MANUALMENTE OS VALORES DA DOENÇA
+          selected_diseases_json: ['a', 'b', 'c', 'd']
+        }
         const requisitionToast = toast.loading('Analisando exame')
-        await client.sendImage('/', imagem[0].file).then((reqBody) => {
-          toast.update(requisitionToast)
-          props.setReq(reqBody)
+        console.log(reqBody)
+        await client.sendImage(reqBody).then((resBody) => {
+          toast.update.success(requisitionToast)
+          props.setReq({file: reqBody.file, ...resBody})
         }).then(() => {
-
-          
           updateCurrentStep(2)
-        })    
+        })
       }
     } catch (error: any) {
       if (error.response){
@@ -39,6 +48,14 @@ export const DiagnosticoStep1: FC<PropsWithChildren<{setReq: (arg: any) => void}
     }
   }
 
+  useEffect(() => {
+    if(!!imagem[0]){
+      const propAssertion = Object.keys(imagem[0]).find((el) => el === 'file')
+      if(!!propAssertion) {
+        setFile(imagem[0])
+      }
+    }
+  }, [imagem])
 
   return (
     <div className="h-full">
@@ -72,19 +89,19 @@ export const DiagnosticoStep1: FC<PropsWithChildren<{setReq: (arg: any) => void}
                 options={[
                   {
                     label: "Masculino",
-                    value: "M",
+                    value: "masculino",
                   },
                   {
                     label: "Feminino",
-                    value: "F",
+                    value: "feminino",
                   },
                 ]}
               ></Dropdown>
             )}
             <CaixaDeUpload
               imagem={imagem}
-              setImagem={setImg}
-              serverResponseStatus={reqStatus}
+              setImagem={setImagem}
+              serverResponseStatus={'unrequested'}
             />
             <p className="text-white pt-3 text-xs">
               Somente PNG e JPG (4mb max)

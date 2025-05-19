@@ -11,6 +11,7 @@ const DiagnosticoStep2: FC<
   const updateCurrentPage = useDiagnosisStore(
     (state) => state.setDiagnosticoStep
   );
+  console.log(req)
 
   const goBackToStep1 = () => {
     updateCurrentPage(1);
@@ -21,13 +22,15 @@ const DiagnosticoStep2: FC<
     <div className="h-full w-full flex justify-center">
       <div
         className="w-fit h-full grid grid-cols-2 grid-rows-auto justify-center items-center
-       place-content-center place-items-center 2xl:gap-y-6 2xl:gap-x-30 "
+       place-content-center place-items-center 2xl:gap-y-6 xl:gap-y-4 gap-y-2 2xl:gap-x-30 gap-x-10"
       >
         <div className="flex flex-col justify-center items-center place-self-end">
           <ContentBox.Root>
             <ContentBox.Title>Imagem Original</ContentBox.Title>
             <ContentBox.Content className="flex items-center justify-center">
-              <Suspense fallback={<DiagnosticoStep2Suspense />}></Suspense>
+              <Suspense fallback={<DiagnosticoStep2Suspense />}>
+                <img src={req.file.data_url} alt="imagem-original" className="max-w-full max-h-full object-contain"/>
+              </Suspense>
             </ContentBox.Content>
           </ContentBox.Root>
         </div>
@@ -37,7 +40,7 @@ const DiagnosticoStep2: FC<
           }}
           className="row-start-2 place-self-center flex items-center justify-center gap-2"
         >
-          <img src={reloadIcon} alt="ok-mark" className="2xl:w-[30px]" />
+          <img src={reloadIcon} alt="ok-mark" className="2xl:w-[30px] xl:w-[20px] w-[15px]" />
           Enviar novo exame
         </Button>
 
@@ -48,7 +51,13 @@ const DiagnosticoStep2: FC<
               Análise Completa
             </ContentBox.Title>
             <ContentBox.Content className="flex items-center justify-center">
-              <Suspense fallback={<DiagnosticoStep2Suspense />}></Suspense>
+              <Suspense fallback={<DiagnosticoStep2Suspense />}>
+                {/* {req.results.forEach(() => {
+                  return (
+
+                  )
+                })} */}
+              </Suspense>
             </ContentBox.Content>
           </ContentBox.Root>
         </div>

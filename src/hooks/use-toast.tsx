@@ -7,7 +7,9 @@ interface toast {
     error: (args: any) => string | number
     promise?: (arg: any) => string | number
     loading: (arg: any) => string | number
-    update: (id: string | number, props?: any) => void
+    update: {
+        success: (id: string | number, props?: any) => void
+    }
 }
 
 const toastComponent = (text: string, type: string) => {
@@ -81,10 +83,12 @@ const appToast: toast = {
     )
     },
 
-    update: (id, props) => {
-        return toast.update(id, {
-            render: {...props? props : toastComponent('Diagnóstico concluído', 'success')}
-        })
+    update: {
+        success: (id, props) => {
+                return toast.update(id, {
+                    render: {...props? props : toastComponent('Diagnóstico concluído', 'success')}
+                })    
+        }
     }
     //EX
     // const getData = () => {

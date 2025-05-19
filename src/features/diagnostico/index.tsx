@@ -8,6 +8,7 @@ export const DiagnosticoSteps = () => {
   const [req, setReq] = useState<any>()
 
   if (currentStep === 1) {
+    // return <DiagnosticoStep2 req={req} setReq={setReq} />;
     return <DiagnosticoStep1 setReq={setReq} />;
   } else {
     return <DiagnosticoStep2 req={req} setReq={setReq} />;

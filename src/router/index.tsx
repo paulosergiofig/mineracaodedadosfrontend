@@ -6,9 +6,9 @@ const Router = () => {
         <BrowserRouter>
             <Routes>
                 <Route element={<AppLayout/>}>
-                    <Route index element={<DiagnosticoSteps/>}/>
-                    <Route path="enviar-imagem/:opcaoCorpo/:doenca/:sexo" element={<EnvioDeImagem/>}/>
-                    <Route path="diagnostico/:opcaoCorpo/:doenca/:sexo" element={<DiagnosticoSteps/>}/>
+                    <Route index element={<Home/>}/>
+                    {/* <Route path="enviar-imagem/:opcaoCorpo/:doenca/:sexo" element={<EnvioDeImagem/>}/> */}
+                    <Route path="diagnostico" element={<DiagnosticoSteps/>}/>
                     <Route path="*" element={<NotFound/>}/>
                 </Route>
             </Routes>
