@@ -4,13 +4,13 @@ type BarraDoDiagnosticoProps = {
   progress: number;
   target: number;
   height?: number;
-  diagnosisDetails: string
+  condition_name: string
 };
 
 export const BarraDoDiagnostico: React.FC<BarraDoDiagnosticoProps> = ({
   progress,
   target,
-  diagnosisDetails,
+  condition_name,
 }) => {
   const numberPresetColor = progress < target ? 'black' : (
     target < 70 ? 'blue' : 'purple-700'
@@ -18,7 +18,7 @@ export const BarraDoDiagnostico: React.FC<BarraDoDiagnosticoProps> = ({
   const barPresetColor = target < 70 ? 'blue' : 'purple-700'
   return (
     <div>
-      <div className="text-xl py-[6px]">{diagnosisDetails}: 
+      <div className="text-xl py-[6px]">{condition_name}: 
         <span className={`text-${numberPresetColor} text-2xl ml-2 font-bold`}>{progress}%</span>
       </div>
     <div

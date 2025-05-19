@@ -8,9 +8,12 @@ const DetalhesDoDiagnostico: FC<DetalhesDoDiagnosticoProps> = (props) => {
   const { diagnosticos } = props
   return (
     <div className='flex flex-col w-full h-full gap-1'>
-    {diagnosticos.map((item) => {
+    {diagnosticos.map((item,index) => {
         return (
-         <WrapperBarraDoDiagnostico probability={item.probability} diagnosis={item.diagnosis}/>
+         <WrapperBarraDoDiagnostico 
+         key={`id-${index}-${item.condition_name}`} 
+         probability={item.probability} 
+         condition_name={item.condition_name}/>
         )
     })}
     </div>

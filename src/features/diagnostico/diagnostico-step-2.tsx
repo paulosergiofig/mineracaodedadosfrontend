@@ -4,6 +4,7 @@ import { useDiagnosisStore } from "@/hooks";
 import DiagnosticoStep2Suspense from "./diagnostico-step-2-suspense";
 import okIcon from "../../assets/imgs/icon_confirmCircled.png";
 import reloadIcon from "../../assets/imgs/reset.png";
+import DetalhesDoDiagnostico from "@/components/diagnostico/detalhes-do-diagnostico";
 
 const DiagnosticoStep2: FC<
   PropsWithChildren<{ req: any; setReq: (arg: any) => void }>> = (props) => {
@@ -52,11 +53,10 @@ const DiagnosticoStep2: FC<
             </ContentBox.Title>
             <ContentBox.Content className="flex items-center justify-center">
               <Suspense fallback={<DiagnosticoStep2Suspense />}>
-                {/* {req.results.forEach(() => {
-                  return (
-
-                  )
-                })} */}
+                <DetalhesDoDiagnostico diagnosticos={[
+                  {probability: 10,
+                  condition_name: 'a'}
+                ]}/>
               </Suspense>
             </ContentBox.Content>
           </ContentBox.Root>
