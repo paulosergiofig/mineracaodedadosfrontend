@@ -13,14 +13,15 @@ export const BarraDoDiagnostico: React.FC<BarraDoDiagnosticoProps> = ({
   target,
   condition_name,
 }) => {
+  console.log(progress, target)
   const numberPresetColor = progress < target ? 'black' : (
-    target < 70 ? 'blue' : 'purple-700'
+    target < 70 ? 'text-blue' : 'text-purple-700'
   )
   const barPresetColor = target < 70 ? 'bg-blue-500' : 'bg-purple-700'
   return (
     <div>
       <div className="text-xl py-[6px]">{condition_name}: 
-        <span className={`text-${numberPresetColor} text-2xl ml-2 font-bold`}>{progress}%</span>
+        <span className={`${numberPresetColor} text-2xl ml-2 font-bold`}>{progress}%</span>
       </div>
     <div
       className={`w-full rounded-full overflow-hidden bg-gray-300 h-4`}>
