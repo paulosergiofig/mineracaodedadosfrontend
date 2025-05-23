@@ -3,11 +3,11 @@ import { BarraDoDiagnostico } from './barra-do-diagnostico';
 
 export interface DiagnosisInformationProps { 
   probability: number,
-  diagnosis: string,
+  condition_name: string,
 }
 
 export const WrapperBarraDoDiagnostico: FC<PropsWithChildren<DiagnosisInformationProps>> = (props) => {
-  const { children, probability, diagnosis } = props
+  const { children, probability, condition_name } = props
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
@@ -20,7 +20,7 @@ export const WrapperBarraDoDiagnostico: FC<PropsWithChildren<DiagnosisInformatio
 
   return (
     <div className='p-3'>
-      <BarraDoDiagnostico diagnosisDetails={diagnosis} target={probability} progress={progress} />
+      <BarraDoDiagnostico condition_name={condition_name} target={probability} progress={progress} />
       {children}
     </div>
   );
