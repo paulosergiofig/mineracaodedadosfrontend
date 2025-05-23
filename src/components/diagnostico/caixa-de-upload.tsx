@@ -3,6 +3,7 @@ import ReactImageUploading from "react-images-uploading";
 import uploadIcon from "../../assets/imgs/icon_upload.png";
 import confirmedIcon from "../../assets/imgs/icon_confirm.png";
 import {largeSpinner} from '../../assets/spinner'
+import { useToast } from "@/hooks/use-toast";
 
 interface CaixaDeUploadProps {
   imagem: any;
@@ -12,8 +13,12 @@ interface CaixaDeUploadProps {
 
 export const CaixaDeUpload: FC<CaixaDeUploadProps> = (props) => {
   const { imagem, setImagem, serverResponseStatus } = props;
+  const {toast} = useToast()
   const onChange = (imageList: any, addUpdateIndex: any) => {
-    console.log(imageList, addUpdateIndex);
+    if(imageList[0].file.size > 4194304) {
+      toast.error('O tamanho máximo da imagem deve ser 4MB.')
+      return
+    }
     setImagem(imageList);
   };
 

@@ -16,9 +16,6 @@ const DiagnosticoStep2: FC<
     updateCurrentPage(1);
     setReq({})
   };
-  useEffect(() => {
-    localStorage.setItem('diagnosisType', req.exam_type)
-  }, [])
 
   return (
     <div className="h-full w-full flex justify-center">

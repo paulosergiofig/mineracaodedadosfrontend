@@ -16,6 +16,7 @@ export const ItemDeOpcaoDeDiagnostico: FC<ItemDeOpcaoDeDiagnosticoComponentProps
 
   const handleClick = (diagnostico: string) => {
     atualizarDiagnosisStore(diagnostico)
+    localStorage.setItem('diagnosisType', diagnostico)
     navigate(`/diagnostico`)
   }
 

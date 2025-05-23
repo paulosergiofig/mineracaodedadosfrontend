@@ -5,6 +5,7 @@ import { client } from "@/client"
 import { FC, PropsWithChildren, useEffect, useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { AxiosError } from "axios";
+import { useNavigate } from "react-router";
 
 export const DiagnosticoStep1: FC<PropsWithChildren<{req: any, setReq: (arg: any) => void}>> = (props) => {
   // const [reqStatus, setReqStatus] = useState("unrequested");
@@ -18,6 +19,7 @@ export const DiagnosticoStep1: FC<PropsWithChildren<{req: any, setReq: (arg: any
   const { toast } = useToast()
   const examType = useDiagnosisStore((state) => state.diagnostico)
   const setExamType = useDiagnosisStore((state) => state.setDiagnostico)
+  const navigate = useNavigate()
   const isIdadeOssea = examType === 'idade_ossea'
 
   useEffect(() => {
@@ -27,8 +29,12 @@ export const DiagnosticoStep1: FC<PropsWithChildren<{req: any, setReq: (arg: any
     }
   }, [])
 
-
   const handleClick = async () => {
+    if(examType === '') {
+      toast.error('Erro ao selecionar tipo de exame. Tente novamente')
+      navigate('/')
+      return
+    }
     try {
       setReqLimiter(true)
       if (!!file){
@@ -40,7 +46,6 @@ export const DiagnosticoStep1: FC<PropsWithChildren<{req: any, setReq: (arg: any
           selected_diseases_json: ['pneumonia', 'derrame pleural', 'a', 'b', 'c', 'dwadw']
         }
         const requisitionToast = toast.loading('Analisando exame')
-        console.log(reqBody)
         await client.sendImage('/diagnose', reqBody).then((resBody) => {
           setReqLimiter(false) 
           toast.update.success(requisitionToast)
