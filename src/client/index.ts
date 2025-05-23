@@ -12,7 +12,7 @@ const req = {
 }
 
 const client: ReqTypes = {
-    sendImage: (reqData) => {
+    sendImage: (path, reqData) => {
         const dataURLToBlob = (dataURL: string): Blob => {
             const [metadata, base64Data] = dataURL.split(',');
             const mimeMatch = metadata.match(/:(.*?);/);
@@ -34,7 +34,7 @@ const client: ReqTypes = {
         !!reqData.selected_diseases_json && formData.append("selected_diseases_json", JSON.stringify(reqData.selected_diseases_json))
 
         return (
-            req.post(reqData.path, formData, {
+            req.post(path, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }

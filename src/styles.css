@@ -5,7 +5,7 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-  --color-background-app: #E8F4FC;
+  --color-background-app: #e7f0ff;
   --color-content-box-title: #EBF5FF;
   --color-dark-blue: #21354D;
   --color-blue: #0084FF;

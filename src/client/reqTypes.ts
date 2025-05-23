@@ -10,9 +10,8 @@ interface ClientReq {
     exam_type: string
     patient_sex?: string
     selected_diseases_json?: string[]
-    path: string
 }
 
 export interface ReqTypes {
-    sendImage: (reqData: ClientReq) => Promise<ServerRes>
+    sendImage: (path: string, reqData: ClientReq) => Promise<ServerRes>
 }

@@ -11,6 +11,7 @@ export const DiagnosticoStep1: FC<PropsWithChildren<{req: any, setReq: (arg: any
   const [sexo, setSexo] = useState<{ label: string; value: string }>();
   const [ file, setFile ] = useState<File>()
   const [ imagem, setImagem ] = useState<any[]>([])
+  const [ reqLimiter, setReqLimiter ] = useState<boolean>(false)
 
   const updateCurrentStep = useDiagnosisStore((state) => state.setDiagnosticoStep);
   // const currentPage = useDiagnosisStore((state) => state.diagnosticoStep);
@@ -26,11 +27,12 @@ export const DiagnosticoStep1: FC<PropsWithChildren<{req: any, setReq: (arg: any
     }
   }, [])
 
+
   const handleClick = async () => {
     try {
+      setReqLimiter(true)
       if (!!file){
         const reqBody = {
-          path: '/diagnose',
           file: file,
           exam_type: examType,
           patient_sex: sexo?.value,
@@ -39,7 +41,8 @@ export const DiagnosticoStep1: FC<PropsWithChildren<{req: any, setReq: (arg: any
         }
         const requisitionToast = toast.loading('Analisando exame')
         console.log(reqBody)
-        await client.sendImage(reqBody).then((resBody) => {
+        await client.sendImage('/diagnose', reqBody).then((resBody) => {
+          setReqLimiter(false) 
           toast.update.success(requisitionToast)
           props.setReq({file: reqBody.file, ...resBody})
         }).then(() => {
@@ -52,6 +55,7 @@ export const DiagnosticoStep1: FC<PropsWithChildren<{req: any, setReq: (arg: any
         const statusText = axiosError.response?.request.statusText || undefined
         const statusCode = axiosError.response?.request.status || undefined
         toast.error(`${statusCode? statusCode: ''} : ${statusText? statusText.toString() : ''}`)
+        setReqLimiter(false)
       }
     }
   }
@@ -127,7 +131,7 @@ export const DiagnosticoStep1: FC<PropsWithChildren<{req: any, setReq: (arg: any
           </div>
         </div>
         <Button
-        disabled={!imagem.length}
+        disabled={!imagem.length || !!reqLimiter}
         className={`${!imagem.length && 'bg-gray-500 hover:bg-gray-500 hover:cursor-default'}`}
         onClick={() => {
           if(!!isIdadeOssea && !sexo) {
