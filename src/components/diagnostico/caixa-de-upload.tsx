@@ -3,6 +3,7 @@ import ReactImageUploading from "react-images-uploading";
 import uploadIcon from "../../assets/imgs/icon_upload.png";
 import confirmedIcon from "../../assets/imgs/icon_confirm.png";
 import {largeSpinner} from '../../assets/spinner'
+import { useToast } from "@/hooks/use-toast";
 
 interface CaixaDeUploadProps {
   imagem: any;
@@ -12,8 +13,12 @@ interface CaixaDeUploadProps {
 
 export const CaixaDeUpload: FC<CaixaDeUploadProps> = (props) => {
   const { imagem, setImagem, serverResponseStatus } = props;
+  const {toast} = useToast()
   const onChange = (imageList: any, addUpdateIndex: any) => {
-    console.log(imageList, addUpdateIndex);
+    if(imageList[0].file.size > 4194304) {
+      toast.error('O tamanho máximo da imagem deve ser 4MB.')
+      return
+    }
     setImagem(imageList);
   };
 
@@ -48,19 +53,23 @@ export const CaixaDeUpload: FC<CaixaDeUploadProps> = (props) => {
                 {...dragProps}
               >
                 {imagem.length < 1 ? (
-                  <div className="flex flex-col items-center gap-[18px] justify-center">
-                    <img src={uploadIcon} alt="upload_icon" className="w-12" />
+                  <div className="flex flex-col items-center gap-[18px] 2xl:gap-[10px] justify-center">
+                    <img src={uploadIcon} alt="upload_icon" className="2xl:w-12 xl:w-10 w-8" />
                     <div>
-                      <h2 className="text-sm xl:text-lg font-bold text-blue">
+                      <h2 className="text-sm 2xl:text-lg font-bold text-blue">
                         Importe seu arquivo
                       </h2>
-                      <h3 className="text-gray-500 text-sm font-normal"></h3>
+                      <h3 className="text-gray-500
+                       text-xs 2xl:text-lg font-normal">
+                        {/* ajustar line-height em 2xl */}
+                        Arraste ou clique para fazer upload
+                      </h3>
                     </div>
                   </div>
                 ) : (
                   <div
                     className="flex flex-col items-center justify-center gap-3
-                       xl:w-[600px] xl:h-[400px]
+                       2xl:w-[600px] 2xl:h-[400px] xl:w-[300px] xl:h-[200px] w-[200px] h-[100px]
                        "
                   >
                     <img
@@ -68,7 +77,9 @@ export const CaixaDeUpload: FC<CaixaDeUploadProps> = (props) => {
                       alt=""
                       className="max-w-full max-h-full object-contain"
                     />
-                    {imageList[0].file?.name}
+                    <p className="text-sm xl:text-md">
+                      {imageList[0].file?.name}
+                    </p>
                   </div>
                 )}
               </button>

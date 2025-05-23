@@ -1,16 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-  --color-background-app: #E8F4FC;
+  --color-background-app: #e7f0ff;
   --color-content-box-title: #EBF5FF;
   --color-dark-blue: #21354D;
   --color-blue: #0084FF;
   --color-light-blue: #CBE4FA; /* caixa de envio da imagem carregando */
-  --color-grayish-blue: #587ca4; /* o do circulo em volta da mulher na homepage */
+  --color-grayish-blue: #6081a8; /* o do circulo em volta da mulher na homepage */
   --color-gradient-brightblue: #586F8A;
   --color-gradient-darkblue: #124685;
   --color-green: #05BC20;
@@ -18,13 +19,13 @@
 }
 
 body {
-  font-family: 'Inter';
+  font-family: 'Inter' ;
   width: 100%;
 }
 
-/* @theme {
-    --font-inter: 'Inter', sans-serif
-} */
+@theme {
+    --font-poppins: 'Poppins', sans-serif
+}
 
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
