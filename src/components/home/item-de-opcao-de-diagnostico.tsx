@@ -27,7 +27,7 @@ export const ItemDeOpcaoDeDiagnostico: FC<ItemDeOpcaoDeDiagnosticoComponentProps
       flex flex-col 2xl:gap-6 xl:gap-3 2xl:p-6 xl:p-4 p-2 items-center justify-center text-center shadow-lg font-poppins"
       onClick={() => handleClick(diagnosticoTipo)}
     >
-      <img className='xl:w-max xl:max-w-full w-[30%] max-w-[30%]' src={imgUrl} alt={`${description}-image`} />
+      <img className='2xl:w-max 2xl:max-w-full xl:w-[50%] xl:max-w-[35%] w-[30%] max-w-[30%]' src={imgUrl} alt={`${description}-image`} />
       <div className="text-gray-400 2xl:text-xl xl:text-lg">{description}</div>
     </button>
   )

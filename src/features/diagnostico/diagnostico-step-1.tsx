@@ -75,18 +75,16 @@ export const DiagnosticoStep1: FC<PropsWithChildren<{req: any, setReq: (arg: any
   }, [imagem])
 
   return (
-    <div className="h-full">
-      <div className="w-full h-full flex flex-col justify-center items-center gap-7">
-        <div
-          className=" bg-linear-to-r from-gradient-brightblue to-gradient-darkblue flex items-start rounded-2xl
-          2xl:w-[1475px] xl:w-[980px] xl:min-h-[444px] lg:w-[800px]
-          2xl:p-15 2xl:px-16 xl:p-10 p-10 px-12
-        "
-        >
-          <div className="flex flex-col relative">
+    <div className="w-full h-full flex flex-col justify-center items-center gap-7">
+      <div className="relative bg-linear-to-r from-gradient-brightblue to-gradient-darkblue items-start rounded-2xl
+          grid grid-cols-2
+          2xl:min-w-[1475px] xl:w-[980px] lg:w-[800px]
+          2xl:p-15 2xl:px-16 xl:p-10 p-10 px-12">
+          <div className="flex flex-col w-full h-full">
             {!!isIdadeOssea && (
               <Dropdown
                 buttonClassName={`
+                z-100
               hover:cursor-pointer bg-white rounded-sm ${
                 !!sexo ? "text-black" : "text-gray-500"
               }
@@ -98,7 +96,8 @@ export const DiagnosticoStep1: FC<PropsWithChildren<{req: any, setReq: (arg: any
                 itemClassName={`
                 2xl:w-[268px]  
                 xl:w-[248px]  
-                w-[190px]  
+                w-[190px]
+                z-200
             `}
                 placeholderText="Selecione o sexo do paciente"
                 opcaoSelecionada={sexo}
@@ -123,19 +122,13 @@ export const DiagnosticoStep1: FC<PropsWithChildren<{req: any, setReq: (arg: any
             <p className="text-white pt-3 text-xs">
               Somente PNG e JPG (4mb max)
             </p>
-            {/* refatorar para div pai ser grid-cols-2, e colocar col-start-2 e mb-0 para a imagem */}
-            {/* pra resolver essa estupidez preguiçosa */}
-            <img src={mulherDiagnostico} alt="" 
-            className={`z-0 absolute 
-              2xl:ml-[110%]  
-              xl:ml-[125%]  
-              ml-[130%] 
-              ${!!isIdadeOssea ? '2xl:my-[-6.9%] xl:my-[0.55%] my-[1%]' : 
-                '2xl:h-[120%] 2xl:my-[-6.2%] xl:my-[-0.6%] my-[-9.5%] xl:h-auto h-[130%]'} 
-            `}/>
           </div>
+
+        <div className="absolute z-10 w-full h-full flex justify-end items-end 2xl:pr-5 pr-3">
+          <img src={mulherDiagnostico} alt="" className="2xl:max-h-[100%] xl:max-h-[80%] max-h-[90%]" />
         </div>
-        <Button
+      </div>
+      <Button
         disabled={!imagem.length || !!reqLimiter}
         className={`${!imagem.length && 'bg-gray-500 hover:bg-gray-500 hover:cursor-default'}`}
         onClick={() => {
@@ -145,7 +138,6 @@ export const DiagnosticoStep1: FC<PropsWithChildren<{req: any, setReq: (arg: any
           }
           handleClick()
         }}>Avançar</Button>
-      </div>
     </div>
   );
 };
