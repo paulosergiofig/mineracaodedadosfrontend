@@ -23,7 +23,7 @@ export const CaixaDeUpload: FC<CaixaDeUploadProps> = (props) => {
   };
 
   return (
-    <div className="2xl:w-[650px] 2xl:h-[475px] xl:h-[300px] xl:w-[400px] w-[300px] h-[200px] rounded-md">
+    <div className="z-50 2xl:w-[650px] 2xl:h-[475px] 2xl:min-h-[475px] xl:h-full xl:min-h-[200px] xl:w-[400px] w-[300px] h-fit rounded-md">
       {serverResponseStatus === "unrequested" ? (
         <ReactImageUploading
           value={imagem}
@@ -40,13 +40,13 @@ export const CaixaDeUpload: FC<CaixaDeUploadProps> = (props) => {
             <div
               className="
                   upload__image-wrapper
-                  w-fit h-fit
+                  w-full h-full
                   "
             >
               <button
                 className="
                       bg-light-blue 
-                      2xl:w-[650px] 2xl:h-[475px] xl:h-[300px] xl:w-[400px] w-[300px] h-[200px] rounded-md
+                      2xl:w-[650px] 2xl:h-[475px] xl:w-[400px] min-w-[300px] h-full min-h-[100px] rounded-md
                       flex justify-center items-center hover:cursor-pointer border-dashed border-gray-500 border-2
                       "
                 onClick={onImageUpload}
